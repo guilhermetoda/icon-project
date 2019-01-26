@@ -29,20 +29,23 @@ public class Typing : MonoBehaviour {
             }
             else if ((c == '\n') || (c == '\r')) // enter/return
             {
-                //
+                _text.text = "";
             }
             // TO DO: We can't allow spacebar
             else
             {
-                _text.text += c;
+
+                char lowerChar = char.ToLower(c);
+                _text.text += lowerChar;
                 if (CheckCurrentWord(_text.text))
                 {
                     _text.text = "";
                     //Destroy Letter
-                    Debug.Log("DestroyLETTER");
                     CurrentWord.DestroyWord();
-                    //Spawn another letter
-                    // Update of CurrentWords
+
+                    //User get Points
+                    PlayerProgression.RightWord(100);
+
                 }
             }
         }

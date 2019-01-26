@@ -5,16 +5,25 @@ using TMPro;
 
 public class CurrentWord : MonoBehaviour {
 
+    //Spawn Position (-50f, -73f, 0f);
+    //End Position (-1024, -73f, 0f);
+
+    [SerializeField] private GameObject[] _wordPrefab; // the word prefab spawn
+    private Words wordsObject;
     private static string currentWord;
     private Canvas canvas;
-    [SerializeField] private GameObject _wordPrefab; // the word prefab spawn
-    private static string[] _wordsList;
     private static GameObject currentWordObject;
+
+    private Camera cam;
+
 
     private void Awake()
     {
+        wordsObject = new Words();
         currentWord = "";
         GameObject tempObject = GameObject.Find("ScreenCanvas");
+        GameObject tempCamObject = GameObject.Find("MainCamera");
+
         if (tempObject != null)
         {
             //If we found the object , get the Canvas component from it.
@@ -24,6 +33,12 @@ public class CurrentWord : MonoBehaviour {
                 Debug.Log("Could not locate Canvas component on " + tempObject.name);
             }
         }
+
+        if (tempCamObject != null)
+        {
+            cam = tempCamObject.GetComponent<Camera>();
+        }
+
         SpawnWord();
       
     }
@@ -55,32 +70,40 @@ public class CurrentWord : MonoBehaviour {
         currentWord = "";
     }
 
-    private static string GetRandomWord()
+    private Vector3 GetSpawnPosition()
     {
-        //get the text component
-        _wordsList = new string[2];
-        _wordsList[0] = "LOVE";
-        _wordsList[1] = "FAMILY";
+        float randomY = Random.Range(80, 200);
+        Vector3 position = cam.ScreenToWorldPoint(new Vector3(0, cam.pixelHeight, cam.nearClipPlane));
+        position.y += -randomY;
+        position.x += 160;
 
-        int randomNumber = Random.Range(0, _wordsList.Length);
-        return _wordsList[randomNumber];
+        return position;
     }
 
     public void SpawnWord()
     {
         // you can't spawn if already exists an object
+        int wordType = Random.Range(0, 2);
+
+        if (PlayerProgression.currentLevel > 1)
+        {
+            wordType = 1; // NEGATIVE WORDS
+        }
+        else
+        {
+            wordType = 0; // POSITIVE WORDS
+        }
 
         if (currentWordObject == null) {
             Debug.Log("Creating New word");
-            string word = GetRandomWord();
+            string word = wordsObject.GetRandomWord(wordType);
             currentWord = word;
-            Vector3 spawnPosition = new Vector3(150f, -73f, 0f);
+            Vector3 spawnPosition = GetSpawnPosition();
             Debug.Log(currentWord);
-            GameObject newWordObject = _wordPrefab;
+            GameObject newWordObject = _wordPrefab[wordType];
             newWordObject.GetComponent<TextMeshProUGUI>().text = currentWord;
             currentWordObject = Instantiate(newWordObject, spawnPosition, Quaternion.identity);
             currentWordObject.transform.SetParent(canvas.transform, false);
-            Debug.Log("AAA"+currentWordObject.GetComponent<TextMeshProUGUI>().text);
            
         }
 
