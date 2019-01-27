@@ -42,12 +42,13 @@ public class Typing : MonoBehaviour {
 
                 char lowerChar = char.ToLower(c);
                 _text.text += lowerChar;
-                if (CheckCurrentWord(_text.text))
+                int indexCurrentWord = CheckCurrentWord(_text.text);
+                if (indexCurrentWord >= 0)
                 {
                     _text.text = "";
                     
                     //Destroy Letter
-                    CurrentWord.DestroyWord();
+                    CurrentWord.DestroyWord(indexCurrentWord);
                     if (PlayerProgression.RightWord(100))
                     {
                         // The player just got new level
@@ -66,10 +67,18 @@ public class Typing : MonoBehaviour {
         }
     }
 
-    private bool CheckCurrentWord(string word)
+    private int CheckCurrentWord(string word)
     {
-        Debug.Log(CurrentWord.GetCurrentWord()+":"+word);
-        return word == CurrentWord.GetCurrentWord();
+        Debug.Log(CurrentWord.GetCurrentWords()+":"+word);
+        List<string> currentWords = CurrentWord.GetCurrentWords();
+        for (int i=0; i < currentWords.Count; i++) {
+            
+            if (word == currentWords[i])
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
 }

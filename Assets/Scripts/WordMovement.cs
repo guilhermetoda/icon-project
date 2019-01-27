@@ -5,13 +5,17 @@ using TMPro;
 
 public class WordMovement : MonoBehaviour {
 
-    private TextMeshProUGUI _text;
+    
+    [SerializeField] private TextMeshProUGUI _textUnder;
+    [SerializeField] private TextMeshProUGUI _textOver;
+
     private Camera cam;
+
 
     private void Awake()
     {
         //get the text component
-        _text = GetComponent<TextMeshProUGUI>();
+        //_textUnder = GetComponent<TextMeshProUGUI>();
         GameObject tempObject = GameObject.Find("MainCamera");
         cam = tempObject.GetComponent<Camera>();
     }
@@ -21,25 +25,23 @@ public class WordMovement : MonoBehaviour {
     {
         // Implements the physics of movement
         
-        bool isFullyVisible = _text.GetComponent<RectTransform>().IsFullyVisibleFrom(cam);
+        bool isFullyVisible = _textUnder.GetComponent<RectTransform>().IsFullyVisibleFrom(cam);
         if (isFullyVisible)
         {
             // This is a UI element since it has a RectTransform component on it
-            _text.rectTransform.position += new Vector3(PlayerProgression.currentSpeed * Time.deltaTime, 0, 0);
+            _textUnder.rectTransform.position += new Vector3(PlayerProgression.currentSpeed * Time.deltaTime, 0, 0);
         }
         else
         {
-            Debug.Log("IS NOT FULLY VIS");
-            
-            CurrentWord.DestroyWord();
+            CurrentWord.DestroyWordByText(_textUnder.text);
             PlayerProgression.PlayerMiss();
         }
 
     }
 
-    private string spawnWord()
+    public void spawnWord(string word)
     {
-        // Implements the spawning word logic
-        return "LOVE";
+        _textUnder.text = word;
+        _textOver.text = "";
     }
 }
