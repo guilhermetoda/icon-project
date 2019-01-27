@@ -193,7 +193,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: uncle
+  m_text: peace
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -300,6 +300,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textUnder: {fileID: 114123970256078476}
   _textOver: {fileID: 114081440716898344}
+  wordReaction: {fileID: 1496222005404162, guid: ebbd73d36922ac94189799cd58b60068,
+    type: 2}
 --- !u!222 &222426620391850062
 CanvasRenderer:
   m_ObjectHideFlags: 1
