@@ -145,7 +145,7 @@ public class Words : MonoBehaviour {
 
     public string[] BadWords()
     {
-        string[] wordsList = new string[90];
+        string[] wordsList = new string[92];
         wordsList[0] = "bad";
         wordsList[1] = "cry";
         wordsList[2] = "mad";
