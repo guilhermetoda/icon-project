@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerProgression : MonoBehaviour 
 {
 
+
     private static AudioSource audio;
 
     //current  score
@@ -31,8 +32,7 @@ public class PlayerProgression : MonoBehaviour
         currentLevel = 1;
         currentLevelProgression = 0;
         RecalculateSpeed();
-
-        audio = gameObject.GetComponent<AudioSource>();
+        audio = GetComponent<AudioSource>();
     }
 
     public static void RecalculateSpeed()
@@ -40,27 +40,29 @@ public class PlayerProgression : MonoBehaviour
         currentSpeed = (float)currentLevel / 10f;
     }
 
-    public static void NextLP()
+    public static bool NextLP()
     {
         currentLevelProgression += 1;
         if (currentLevelProgression >= LPLevel)
         {
             NextLevel();
+            return true;
         }
+        return false;
     }
 
     public static void NextLevel()
     {
         currentLevel += 1;
         currentLevelProgression = 0;
-        RecalculateSpeed();
+        RecalculateSpeed(); 
     }
 
-    public static void RightWord(int wordScore)
+    //Returns true if the player reaches new level
+    public static bool RightWord(int wordScore)
     {
         currentScore += wordScore;
-        
-        NextLP();
+        return NextLP();
     }
 
     public static void PlayerMiss()

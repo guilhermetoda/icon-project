@@ -10,7 +10,6 @@ public class CurrentWord : MonoBehaviour {
     private static string currentWord;
     private Canvas canvas;
     private static GameObject currentWordObject;
-    private static AudioSource audio;
     private Camera cam;
 
 
@@ -21,7 +20,6 @@ public class CurrentWord : MonoBehaviour {
         GameObject tempObject = GameObject.Find("ScreenCanvas");
         GameObject tempCamObject = GameObject.Find("MainCamera");
 
-        audio = GetComponent<AudioSource>();
 
         if (tempObject != null)
         {
@@ -58,11 +56,6 @@ public class CurrentWord : MonoBehaviour {
     public static string GetCurrentWord()
     {
         return currentWord;
-    }
-
-    public static void PlayCorrectSound()
-    {
-        audio.Play();
     }
 
     public static void DestroyWord()

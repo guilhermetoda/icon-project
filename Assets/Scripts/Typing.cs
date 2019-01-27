@@ -8,10 +8,15 @@ public class Typing : MonoBehaviour {
 
     private TextMeshProUGUI _text;
 
+    [SerializeField] private AudioClip audioLevelUp;
+    [SerializeField] private AudioClip audioCorrectWord;
+    private AudioSource audio;
+    
     private void Awake()
     {
         //get the text component
         _text = GetComponent<TextMeshProUGUI>();
+        audio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -40,12 +45,21 @@ public class Typing : MonoBehaviour {
                 if (CheckCurrentWord(_text.text))
                 {
                     _text.text = "";
-                    CurrentWord.PlayCorrectSound();  // plays sound when collided.
+                    
                     //Destroy Letter
                     CurrentWord.DestroyWord();
-
-                    //User get Points
-                    PlayerProgression.RightWord(100);
+                    if (PlayerProgression.RightWord(100))
+                    {
+                        // The player just got new level
+                        audio.PlayOneShot(audioLevelUp);
+                    }
+                    else
+                    {
+                        // The player just got the right word
+                        audio.PlayOneShot(audioCorrectWord);
+                    }
+                   
+                   
 
                 }
             }
