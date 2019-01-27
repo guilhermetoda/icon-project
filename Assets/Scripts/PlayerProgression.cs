@@ -37,7 +37,7 @@ public class PlayerProgression : MonoBehaviour
 
     public static void RecalculateSpeed()
     {
-        currentSpeed = (float)currentLevel / 10f;
+        currentSpeed = Mathf.Log10((int)(currentLevel / 2f) + 50) / 5f;
     }
 
     public static bool NextLP()
@@ -55,7 +55,15 @@ public class PlayerProgression : MonoBehaviour
     {
         currentLevel += 1;
         currentLevelProgression = 0;
-        RecalculateSpeed(); 
+        RecalculateSpeed();
+        if (currentLevel % 2 == 1 )
+        {
+            GameObject.Find("MainCamera").GetComponent<CameraTransition>().ChangeToOfficeCamera();
+        }
+        else
+        {
+            GameObject.Find("MainCamera").GetComponent<CameraTransition>().ChangeToHomeCamera();
+        }
     }
 
     //Returns true if the player reaches new level
@@ -65,12 +73,22 @@ public class PlayerProgression : MonoBehaviour
         return NextLP();
     }
 
+    public static void PlayerMistake()
+    {
+        audio.Play();
+        foreach (var ob in CurrentWord.GetCurrentWordObjects())
+        {
+            ob.GetComponent<WordMovement>().Mistake();
+        }
+    }
+
     public static void PlayerMiss()
     {
         currentLevelProgression = 0;
         audio.Play();
         // -1000 points for losing the word (CHANGE THAT LATER, DENY!)
         currentScore -= 1000;
+        Typing.TextBox.ClearInputText();
     }
 
 
