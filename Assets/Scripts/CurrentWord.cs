@@ -96,7 +96,7 @@ public class CurrentWord : MonoBehaviour {
             Vector3 spawnPosition = GetSpawnPosition();
             
             GameObject newWordObject = _wordPrefab[wordType];
-            newWordObject.GetComponent<TextMeshProUGUI>().text = currentWord;
+            newWordObject.GetComponent<WordMovement2>().spawnWord(currentWord); // use wordMovement2 instead of original. call spawnWord method from here
             currentWordObject = Instantiate(newWordObject, spawnPosition, Quaternion.identity);
             currentWordObject.transform.SetParent(canvas.transform, false);
            

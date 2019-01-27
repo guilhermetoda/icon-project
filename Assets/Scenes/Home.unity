@@ -1856,8 +1856,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wordPrefab:
-  - {fileID: 1686998960775880, guid: a83ab5230bd134a42a515683b8864b41, type: 2}
-  - {fileID: 1686998960775880, guid: 4e12d7d8884e3f341b48ce8e3c387185, type: 2}
+  - {fileID: 1105600944585072, guid: fac34c026e335dd43896efce402a8578, type: 2}
+  - {fileID: 1502451147413802, guid: 2708a45bf19f7ae439f36fe10a72e665, type: 2}
 --- !u!4 &631524929
 Transform:
   m_ObjectHideFlags: 0
