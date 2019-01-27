@@ -1,0 +1,182 @@
+fileFormatVersion: 2
+guid: 910ea46d8a7ba154e9da15c21471fb48
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: group
+    100004: pCube3
+    100006: pCube7
+    100008: pCube9
+    100010: transform1
+    100012: transform2
+    100014: pCube10
+    100016: Character
+    100018: ikHandle1
+    100020: ikHandle2
+    100022: ikHandle3
+    100024: ikHandle4
+    100026: L_Arm_jt
+    100028: L_Elbow_jt
+    100030: L_ElbowCap_jt
+    100032: L_Foot_end
+    100034: L_Foot_jt
+    100036: L_Hand_end
+    100038: L_Hand_jt
+    100040: L_Knee_jt
+    100042: L_Leg_jt
+    100044: M_Head_end
+    100046: M_Head_jt
+    100048: M_LowerBody_jt
+    100050: M_MidBody_jt
+    100052: M_Neck_jt
+    100054: M_UpperBody_jt
+    100056: R_Arm_jt
+    100058: R_Elbow_jt
+    100060: R_ElbowCap_jt
+    100062: R_Foot_end
+    100064: R_Foot_jt
+    100066: R_Hand_end
+    100068: R_Hand_jt
+    100070: R_Knee_jt
+    100072: R_Leg_jt
+    400000: //RootNode
+    400002: group
+    400004: pCube3
+    400006: pCube7
+    400008: pCube9
+    400010: transform1
+    400012: transform2
+    400014: pCube10
+    400016: Character
+    400018: ikHandle1
+    400020: ikHandle2
+    400022: ikHandle3
+    400024: ikHandle4
+    400026: L_Arm_jt
+    400028: L_Elbow_jt
+    400030: L_ElbowCap_jt
+    400032: L_Foot_end
+    400034: L_Foot_jt
+    400036: L_Hand_end
+    400038: L_Hand_jt
+    400040: L_Knee_jt
+    400042: L_Leg_jt
+    400044: M_Head_end
+    400046: M_Head_jt
+    400048: M_LowerBody_jt
+    400050: M_MidBody_jt
+    400052: M_Neck_jt
+    400054: M_UpperBody_jt
+    400056: R_Arm_jt
+    400058: R_Elbow_jt
+    400060: R_ElbowCap_jt
+    400062: R_Foot_end
+    400064: R_Foot_jt
+    400066: R_Hand_end
+    400068: R_Hand_jt
+    400070: R_Knee_jt
+    400072: R_Leg_jt
+    2100000: lambert1
+    2100002: lambert7
+    2100004: lambert5
+    2100006: lambert2
+    2100008: lambert3
+    2100010: lambert6
+    2100012: lambert4
+    2100014: lambert9
+    2100016: lambert8
+    2300000: pCube9
+    2300002: pCube10
+    2300004: Character
+    3300000: pCube9
+    3300002: pCube10
+    3300004: Character
+    4300000: pCube9
+    4300002: pCube10
+    4300004: Character
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Character
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: M_LowerBody_jt
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

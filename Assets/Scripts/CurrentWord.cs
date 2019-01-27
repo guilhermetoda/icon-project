@@ -5,24 +5,24 @@ using TMPro;
 
 public class CurrentWord : MonoBehaviour {
 
-    //Spawn Position (-50f, -73f, 0f);
-    //End Position (-1024, -73f, 0f);
-
     [SerializeField] private GameObject[] _wordPrefab; // the word prefab spawn
     private Words wordsObject;
-    private static string currentWord;
+    //private static string[] currentWord;
+    private static List<string> currentWords = new List<string>();
     private Canvas canvas;
-    private static GameObject currentWordObject;
-
+    private static List<GameObject> currentWordObjects = new List<GameObject>();
     private Camera cam;
 
+    private float _spawnCooldown = 2f;
+    private int _maxWordsOnScreen = 5;
 
     private void Awake()
     {
         wordsObject = new Words();
-        currentWord = "";
+        //currentWord = "";
         GameObject tempObject = GameObject.Find("ScreenCanvas");
         GameObject tempCamObject = GameObject.Find("MainCamera");
+
 
         if (tempObject != null)
         {
@@ -38,36 +38,61 @@ public class CurrentWord : MonoBehaviour {
         {
             cam = tempCamObject.GetComponent<Camera>();
         }
-
-        SpawnWord();
-      
+        InvokeRepeating("SpawnWord", 0f, _spawnCooldown);
     }
 
     // Update is called once per frame
-    void Update () {
+    /*void Update () {
+
+
+
 		if (currentWord == "")
         {
             SpawnWord();
         }
-	}
+	}*/
 
     public void SetCurrentWord(string word)
     {
-        currentWord = word;
+        currentWords.Add(word);
     }
 
-    public static string GetCurrentWord()
+    public static List<string> GetCurrentWords()
     {
-        return currentWord;
+        return currentWords;
     }
 
-    public static void DestroyWord()
+    public static void DestroyWord(int index)
     {
-        Debug.Log("Destroying Word");
+
+        Destroy(currentWordObjects[index].gameObject);
+        currentWordObjects.RemoveAt(index);
+        currentWords.RemoveAt(index);
+  
+    }
+
+    public static void DestroyWordByText(string text)
+    {
+        int index = CheckCurrentWord(text);
+        if (index >= 0)
+        {
+            DestroyWord(index);
+        }
+                       
+    }
+
+    private static int CheckCurrentWord(string word)
+    {
         
-        Destroy(currentWordObject.gameObject);
-       
-        currentWord = "";
+        List<string> currentWords = GetCurrentWords();
+        for (int i = 0; i < currentWords.Count; i++)
+        {
+            if (word == currentWords[i])
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private Vector3 GetSpawnPosition()
@@ -82,31 +107,35 @@ public class CurrentWord : MonoBehaviour {
 
     public void SpawnWord()
     {
-        // you can't spawn if already exists an object
-        int wordType = Random.Range(0, 2);
 
-        if (PlayerProgression.currentLevel > 1)
+        if (currentWords.Count <= _maxWordsOnScreen)
         {
-            wordType = 1; // NEGATIVE WORDS
-        }
-        else
-        {
-            wordType = 0; // POSITIVE WORDS
-        }
 
-        if (currentWordObject == null) {
-            Debug.Log("Creating New word");
+            // you can't spawn if already exists an object
+            int wordType = Random.Range(0, 2);
+
+            if (PlayerProgression.currentLevel > 1)
+            {
+                wordType = 1; // NEGATIVE WORDS
+            }
+            else
+            {
+                wordType = 0; // POSITIVE WORDS
+            }
+
+
             string word = wordsObject.GetRandomWord(wordType);
-            currentWord = word;
+            SetCurrentWord(word);
             Vector3 spawnPosition = GetSpawnPosition();
-            Debug.Log(currentWord);
-            GameObject newWordObject = _wordPrefab[wordType];
-            newWordObject.GetComponent<TextMeshProUGUI>().text = currentWord;
-            currentWordObject = Instantiate(newWordObject, spawnPosition, Quaternion.identity);
-            currentWordObject.transform.SetParent(canvas.transform, false);
-           
-        }
 
+            GameObject newWordObject = _wordPrefab[wordType];
+
+            //newWordObject.GetComponent<TextMeshProUGUI>().text = word; // use wordMovement2 instead of original. call spawnWord method from here
+            newWordObject.GetComponent<WordMovement>().spawnWord(word);
+            GameObject currentWordObject = Instantiate(newWordObject, spawnPosition, Quaternion.identity);
+            currentWordObject.transform.SetParent(canvas.transform, false);
+            currentWordObjects.Add(currentWordObject);
+        }
     }
 
     

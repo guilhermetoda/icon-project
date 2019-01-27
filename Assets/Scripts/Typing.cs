@@ -8,10 +8,15 @@ public class Typing : MonoBehaviour {
 
     private TextMeshProUGUI _text;
 
+    [SerializeField] private AudioClip audioLevelUp;
+    [SerializeField] private AudioClip audioCorrectWord;
+    private AudioSource audio;
+    
     private void Awake()
     {
         //get the text component
         _text = GetComponent<TextMeshProUGUI>();
+        audio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -37,24 +42,43 @@ public class Typing : MonoBehaviour {
 
                 char lowerChar = char.ToLower(c);
                 _text.text += lowerChar;
-                if (CheckCurrentWord(_text.text))
+                int indexCurrentWord = CheckCurrentWord(_text.text);
+                if (indexCurrentWord >= 0)
                 {
                     _text.text = "";
+                    
                     //Destroy Letter
-                    CurrentWord.DestroyWord();
-
-                    //User get Points
-                    PlayerProgression.RightWord(100);
+                    CurrentWord.DestroyWord(indexCurrentWord);
+                    if (PlayerProgression.RightWord(100))
+                    {
+                        // The player just got new level
+                        audio.PlayOneShot(audioLevelUp);
+                    }
+                    else
+                    {
+                        // The player just got the right word
+                        audio.PlayOneShot(audioCorrectWord);
+                    }
+                   
+                   
 
                 }
             }
         }
     }
 
-    private bool CheckCurrentWord(string word)
+    private int CheckCurrentWord(string word)
     {
-        Debug.Log(CurrentWord.GetCurrentWord()+":"+word);
-        return word == CurrentWord.GetCurrentWord();
+        Debug.Log(CurrentWord.GetCurrentWords()+":"+word);
+        List<string> currentWords = CurrentWord.GetCurrentWords();
+        for (int i=0; i < currentWords.Count; i++) {
+            
+            if (word == currentWords[i])
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
 }

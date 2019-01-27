@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerProgression : MonoBehaviour {
+public class PlayerProgression : MonoBehaviour 
+{
+
+
+    private static AudioSource audio;
 
     //current  score
     public static int currentScore;
@@ -28,6 +32,7 @@ public class PlayerProgression : MonoBehaviour {
         currentLevel = 1;
         currentLevelProgression = 0;
         RecalculateSpeed();
+        audio = GetComponent<AudioSource>();
     }
 
     public static void RecalculateSpeed()
@@ -35,31 +40,35 @@ public class PlayerProgression : MonoBehaviour {
         currentSpeed = (float)currentLevel / 10f;
     }
 
-    public static void NextLP()
+    public static bool NextLP()
     {
         currentLevelProgression += 1;
         if (currentLevelProgression >= LPLevel)
         {
             NextLevel();
+            return true;
         }
+        return false;
     }
 
     public static void NextLevel()
     {
         currentLevel += 1;
         currentLevelProgression = 0;
-        RecalculateSpeed();
+        RecalculateSpeed(); 
     }
 
-    public static void RightWord(int wordScore)
+    //Returns true if the player reaches new level
+    public static bool RightWord(int wordScore)
     {
         currentScore += wordScore;
-        NextLP();
+        return NextLP();
     }
 
     public static void PlayerMiss()
     {
         currentLevelProgression = 0;
+        audio.Play();
         // -1000 points for losing the word (CHANGE THAT LATER, DENY!)
         currentScore -= 1000;
     }
