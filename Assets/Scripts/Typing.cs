@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine.UI;
 
 public class Typing : MonoBehaviour {
-    public static Typing TextBox;
     private TextMeshProUGUI _text;
 
     [SerializeField] private AudioClip audioLevelUp;
@@ -19,7 +18,6 @@ public class Typing : MonoBehaviour {
         //get the text component
         _text = GetComponent<TextMeshProUGUI>();
         audio = GetComponent<AudioSource>();
-        TextBox = this;
     }
 
     private void Update()

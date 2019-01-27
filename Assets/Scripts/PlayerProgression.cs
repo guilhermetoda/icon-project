@@ -40,6 +40,34 @@ public class PlayerProgression : MonoBehaviour
         currentSpeed = Mathf.Log10((int)(currentLevel / 2f) + 50) / 5f;
     }
 
+    public static float RecalculateCooldownTime()
+    {
+        if (currentLevel == 1)
+        {
+            return 2f;
+        }
+        else if (currentLevel == 2)
+        {
+            return 1.8f;
+        }
+        else if (currentLevel == 3)
+        {
+            return 1.4f;
+        }
+        else if (currentLevel == 4)
+        {
+            return 1.2f;
+        }
+        else if (currentLevel == 5)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0.8f;
+        }
+    }
+
     public static bool NextLP()
     {
         currentLevelProgression += 1;
@@ -55,15 +83,21 @@ public class PlayerProgression : MonoBehaviour
     {
         currentLevel += 1;
         currentLevelProgression = 0;
+        CurrentWord.ResetWords();
         RecalculateSpeed();
-        if (currentLevel % 2 == 1 )
+        if (currentLevel % 2 == 1)
         {
             GameObject.Find("MainCamera").GetComponent<CameraTransition>().ChangeToOfficeCamera();
+            //1.5f when you are in the office
+            CurrentWord.InvokeSpawn(1.5f);
         }
         else
         {
+            //2f when you are at home
+            CurrentWord.InvokeSpawn(2f);
             GameObject.Find("MainCamera").GetComponent<CameraTransition>().ChangeToHomeCamera();
         }
+       
     }
 
     //Returns true if the player reaches new level
@@ -88,7 +122,7 @@ public class PlayerProgression : MonoBehaviour
         audio.Play();
         // -1000 points for losing the word (CHANGE THAT LATER, DENY!)
         currentScore -= 1000;
-        Typing.TextBox.ClearInputText();
+        //Typing.TextBox.ClearInputText();
     }
 
 

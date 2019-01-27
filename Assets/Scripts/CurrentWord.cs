@@ -13,11 +13,14 @@ public class CurrentWord : MonoBehaviour {
     private static List<GameObject> currentWordObjects = new List<GameObject>();
     private Camera cam;
 
-    private float _spawnCooldown = 1.5f;
-    private int _maxWordsOnScreen = 5;
+    public static CurrentWord invokerController;
+
+    private float _spawnCooldown = 3f;
+    private int _maxWordsOnScreen = 4;
 
     private void Awake()
     {
+        invokerController = this;
         wordsObject = new Words();
         //currentWord = "";
         GameObject tempObject = GameObject.Find("ScreenCanvas");
@@ -38,7 +41,7 @@ public class CurrentWord : MonoBehaviour {
         {
             cam = tempCamObject.GetComponent<Camera>();
         }
-        InvokeRepeating("SpawnWord", 0f, _spawnCooldown);
+        invokerController.InvokeRepeating("SpawnWord", 0f, _spawnCooldown);
     }
 
     // Update is called once per frame
@@ -51,6 +54,27 @@ public class CurrentWord : MonoBehaviour {
             SpawnWord();
         }
 	}*/
+
+    public static void ResetWords()
+    {
+        //Stop Invoke to Reinvoke
+        invokerController.CancelInvoke();
+        DestroyAllWordObjects();
+    }
+
+    public static void InvokeSpawn(float cooldown)
+    {
+        invokerController.InvokeRepeating("SpawnWord", 0f, cooldown);
+    }
+
+    //This will destroy every word object that still are in the scene
+    public static void DestroyAllWordObjects()
+    {
+        for (int i=0; i < currentWordObjects.Count; i++)
+        {
+            DestroyWord(i);
+        }
+    }
 
     public void SetCurrentWord(string word)
     {
@@ -102,8 +126,6 @@ public class CurrentWord : MonoBehaviour {
         float randomY = Random.Range(80, 200);
         Vector3 position = cam.ScreenToWorldPoint(new Vector3(0, cam.pixelHeight, cam.nearClipPlane));
         position.y += -randomY;
-        position.x += 200;
-
         return position;
     }
 
