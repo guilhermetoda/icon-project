@@ -33,9 +33,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1685565798287046}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 641.3635, y: 99.075195, z: -130.32422}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 169.46817, y: -137.11414, z: -115.71518}
+  m_LocalScale: {x: 0.8879023, y: 0.8879023, z: 0.8879023}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,4 +51,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8cf4a90216c2d4fa6aba08657d0a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeOutTexture: {fileID: 2800000, guid: 99d35404e2428fa4197dc84271307ec5, type: 3}
+  fadeOutTexture: {fileID: 2800000, guid: 206b2da4c34474442935d8c5d5248708, type: 3}

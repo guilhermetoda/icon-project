@@ -32,7 +32,10 @@ public class CheckEnter : MonoBehaviour {
         {
             if (c == '\b') // has backspace/delete been pressed?
             {
-                BackSpace();
+                if (_text.text.Length != 0)
+                {
+                    _text.text = _text.text.Substring(0, _text.text.Length - 1);
+                }
             }
             else if ((c == '\n') || (c == '\r')) // enter/return
             {
@@ -67,16 +70,12 @@ public class CheckEnter : MonoBehaviour {
     }
     private void BackSpace()
     {
-        if (_text.text.Length != 0)
-        {
-            _text.text = _text.text.Substring(0, _text.text.Length - 1);
-        }
+       
     }
 
     private void AddInputCharacter(char input)
     {
-        _input += input;
-        _text.text = _input;
+        _text.text += input;
     }
 
     public void ClearInputText()
