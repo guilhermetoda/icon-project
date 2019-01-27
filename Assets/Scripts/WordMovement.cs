@@ -29,7 +29,14 @@ public class WordMovement : MonoBehaviour {
         if (isFullyVisible)
         {
             // This is a UI element since it has a RectTransform component on it
-            _textUnder.rectTransform.position += new Vector3(PlayerProgression.currentSpeed * Time.deltaTime, 0, 0);
+            if (PlayerProgression.currentLevel % 2 == 1)
+            {
+                _textUnder.rectTransform.position -= new Vector3(PlayerProgression.currentSpeed * Time.deltaTime, 0, 0);
+            }
+            else
+            {
+                _textUnder.rectTransform.position += new Vector3(PlayerProgression.currentSpeed * Time.deltaTime, 0, 0);
+            }
         }
         else
         {

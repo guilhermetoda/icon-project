@@ -64,7 +64,6 @@ public class CurrentWord : MonoBehaviour {
 
     public static void DestroyWord(int index)
     {
-
         Destroy(currentWordObjects[index].gameObject);
         currentWordObjects.RemoveAt(index);
         currentWords.RemoveAt(index);
@@ -100,7 +99,7 @@ public class CurrentWord : MonoBehaviour {
         float randomY = Random.Range(80, 200);
         Vector3 position = cam.ScreenToWorldPoint(new Vector3(0, cam.pixelHeight, cam.nearClipPlane));
         position.y += -randomY;
-        position.x += 160;
+        position.x += 200;
 
         return position;
     }
@@ -114,7 +113,7 @@ public class CurrentWord : MonoBehaviour {
             // you can't spawn if already exists an object
             int wordType = Random.Range(0, 2);
 
-            if (PlayerProgression.currentLevel > 1)
+            if (PlayerProgression.currentLevel % 2 == 1)
             {
                 wordType = 1; // NEGATIVE WORDS
             }

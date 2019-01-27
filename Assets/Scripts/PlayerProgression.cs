@@ -55,7 +55,15 @@ public class PlayerProgression : MonoBehaviour
     {
         currentLevel += 1;
         currentLevelProgression = 0;
-        RecalculateSpeed(); 
+        RecalculateSpeed();
+        if (currentLevel % 2 == 1 )
+        {
+            GameObject.Find("MainCamera").GetComponent<CameraTransition>().ChangeToOfficeCamera();
+        }
+        else
+        {
+            GameObject.Find("MainCamera").GetComponent<CameraTransition>().ChangeToHomeCamera();
+        }
     }
 
     //Returns true if the player reaches new level
