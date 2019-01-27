@@ -9,6 +9,7 @@ public class Typing : MonoBehaviour {
 
     [SerializeField] private AudioClip audioLevelUp;
     [SerializeField] private AudioClip audioCorrectWord;
+    [SerializeField] private AudioClip audioTyping;
     private AudioSource audio;
 
     private string _input = "";
@@ -64,6 +65,7 @@ public class Typing : MonoBehaviour {
         if (_text.text.Length != 0)
         {
             _text.text = _text.text.Substring(0, _text.text.Length - 1);
+            audio.PlayOneShot(audioTyping);
         }
     }
 
@@ -71,6 +73,7 @@ public class Typing : MonoBehaviour {
     {
         _input += input;
         _text.text = _input;
+        audio.PlayOneShot(audioTyping);
         if (!HighlightWords(_input))
         {
             ClearInputText();

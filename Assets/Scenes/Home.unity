@@ -5665,6 +5665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioLevelUp: {fileID: 8300000, guid: eb65d9f94b979844e9a5647ac556e40c, type: 3}
   audioCorrectWord: {fileID: 8300000, guid: 40370f9b43e950540ae7a0cb4135e89b, type: 3}
+  audioTyping: {fileID: 8300000, guid: 6e3fa0ab28f81bf48bcddb713631800f, type: 3}
 --- !u!114 &569927296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5799,7 +5800,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.483
   m_Pitch: 1
   Loop: 0
   Mute: 0
