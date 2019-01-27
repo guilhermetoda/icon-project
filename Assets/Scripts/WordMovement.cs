@@ -8,6 +8,7 @@ public class WordMovement : MonoBehaviour {
     
     [SerializeField] private TextMeshProUGUI _textUnder;
     [SerializeField] private TextMeshProUGUI _textOver;
+    [SerializeField] private GameObject wordReaction;
 
     private float _screenOffset = 400;
 
@@ -61,6 +62,11 @@ public class WordMovement : MonoBehaviour {
     public void Mistake()
     {
         //UpdatePosition(0.1f);
+    }
+
+    public void WordReaction(Vector3 position)
+    {
+        Instantiate(wordReaction, position, GameObject.Find("MainCamera").transform.rotation);
     }
 
     public void spawnWord(string word)

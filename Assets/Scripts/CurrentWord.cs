@@ -91,8 +91,11 @@ public class CurrentWord : MonoBehaviour {
         return currentWordObjects;
     }
 
-    public static void DestroyWord(int index)
+    public static void DestroyWord(int index, int flag=0)
     {
+        if (flag == 0) {
+            currentWordObjects[index].GetComponent<WordMovement>().WordReaction(currentWordObjects[index].transform.position);
+        }
         Destroy(currentWordObjects[index].gameObject);
         currentWordObjects.RemoveAt(index);
         currentWords.RemoveAt(index);
@@ -103,7 +106,7 @@ public class CurrentWord : MonoBehaviour {
         int index = CheckCurrentWord(text);
         if (index >= 0)
         {
-            DestroyWord(index);
+            DestroyWord(index, 1);
         }
                        
     }

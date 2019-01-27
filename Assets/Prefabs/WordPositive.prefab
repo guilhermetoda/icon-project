@@ -40,6 +40,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd79d13714994249a3ffab3d2472cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _textUnder: {fileID: 0}
+  _textOver: {fileID: 0}
+  wordReaction: {fileID: 0}
 --- !u!114 &114548272988397422
 MonoBehaviour:
   m_ObjectHideFlags: 1
