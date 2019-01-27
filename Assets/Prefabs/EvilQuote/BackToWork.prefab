@@ -50,7 +50,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4559124113249608}
   m_Layer: 0
-  m_Name: BubbleEvil
+  m_Name: BackToWork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

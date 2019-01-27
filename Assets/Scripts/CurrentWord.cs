@@ -26,7 +26,6 @@ public class CurrentWord : MonoBehaviour {
         GameObject tempObject = GameObject.Find("ScreenCanvas");
         GameObject tempCamObject = GameObject.Find("MainCamera");
 
-
         if (tempObject != null)
         {
             //If we found the object , get the Canvas component from it.
@@ -91,8 +90,11 @@ public class CurrentWord : MonoBehaviour {
         return currentWordObjects;
     }
 
-    public static void DestroyWord(int index)
+    public static void DestroyWord(int index, int flag=0)
     {
+        if (flag == 0) {
+            currentWordObjects[index].GetComponent<WordMovement>().WordReaction(currentWordObjects[index].transform.position);
+        }
         Destroy(currentWordObjects[index].gameObject);
         currentWordObjects.RemoveAt(index);
         currentWords.RemoveAt(index);
@@ -103,7 +105,7 @@ public class CurrentWord : MonoBehaviour {
         int index = CheckCurrentWord(text);
         if (index >= 0)
         {
-            DestroyWord(index);
+            DestroyWord(index, 1);
         }
                        
     }
@@ -158,6 +160,7 @@ public class CurrentWord : MonoBehaviour {
             newWordObject.GetComponent<WordMovement>().spawnWord(word);
             GameObject currentWordObject = Instantiate(newWordObject, spawnPosition, Quaternion.identity);
             currentWordObject.transform.SetParent(canvas.transform, false);
+            currentWordObject.transform.SetAsFirstSibling();
             currentWordObjects.Add(currentWordObject);
         }
     }

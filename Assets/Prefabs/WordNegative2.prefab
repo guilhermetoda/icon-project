@@ -74,6 +74,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textUnder: {fileID: 114359915384930450}
   _textOver: {fileID: 114821341738918796}
+  wordReaction: {fileID: 1861314617310422, guid: 9465cb22e522b184892c6ea63161ff22,
+    type: 2}
 --- !u!114 &114359915384930450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,7 +95,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: disrupt
+  m_text: hopeless
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b7aa01007089b34b8cfaa33a1237bfc, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
