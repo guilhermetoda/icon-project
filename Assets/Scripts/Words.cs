@@ -145,7 +145,7 @@ public class Words : MonoBehaviour {
 
     public string[] BadWords()
     {
-        string[] wordsList = new string[59];
+        string[] wordsList = new string[92];
         wordsList[0] = "bad";
         wordsList[1] = "cry";
         wordsList[2] = "mad";
@@ -192,7 +192,7 @@ public class Words : MonoBehaviour {
         wordsList[43] = "terrible";
         wordsList[44] = "unsure";
         wordsList[45] = "disagree";
-        wordsList[46] = "spreadsheets";
+        wordsList[46] = "spread";
         wordsList[47] = "overtime";
         wordsList[48] = "negative";
         wordsList[49] = "destroy";
@@ -205,6 +205,39 @@ public class Words : MonoBehaviour {
         wordsList[56] = "deadlines";
         wordsList[57] = "uncertainty";
         wordsList[58] = "depression";
+        wordsList[59] = "paradigm";
+        wordsList[60] = "controversy";
+        wordsList[61] = "gossip";
+        wordsList[62] = "weight";
+        wordsList[63] = "patience";
+        wordsList[64] = "exhaustion";
+        wordsList[65] = "commute";
+        wordsList[66] = "innovative";
+        wordsList[67] = "products";
+        wordsList[68] = "storage";
+        wordsList[69] = "synergy";
+        wordsList[70] = "tactical";
+        wordsList[71] = "ubiquitous";
+        wordsList[72] = "proactive";
+        wordsList[73] = "demand";
+        wordsList[74] = "resources";
+        wordsList[75] = "frictionless";
+        wordsList[76] = "streamline";
+        wordsList[77] = "strategize";
+        wordsList[78] = "orchestrate";
+        wordsList[79] = "myocardinate";
+        wordsList[80] = "spreadsheets";
+        wordsList[81] = "professionally";
+        wordsList[82] = "distinctively";
+        wordsList[83] = "conveniently";
+        wordsList[84] = "fungibly";
+        wordsList[85] = "expedite";
+        wordsList[86] = "exploit";
+        wordsList[87] = "fabricate";
+        wordsList[88] = "implement";
+        wordsList[89] = "cooperative";
+        wordsList[90] = "mindshare";
+        wordsList[91] = "spreadsheets";
         return wordsList;
 
     }

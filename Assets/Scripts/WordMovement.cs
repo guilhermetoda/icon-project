@@ -16,7 +16,9 @@ public class WordMovement : MonoBehaviour {
     {
         //get the text component
         //_textUnder = GetComponent<TextMeshProUGUI>();
-        
+        GameObject tempObject = GameObject.Find("MainCamera");
+        cam = tempObject.GetComponent<Camera>();
+        _textUnder.rectTransform.localPosition = new Vector3(-199, _textUnder.rectTransform.localPosition.y);
     }
 
     // Update is called once per frame
