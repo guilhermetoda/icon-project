@@ -6,15 +6,12 @@ using TMPro;
 public class WordMovement2 : MonoBehaviour
 {
 
-    private TextMeshProUGUI _textUnder;
-    private TextMeshProUGUI _textOver;
+    [SerializeField] private TextMeshProUGUI _textUnder;
+    [SerializeField] private TextMeshProUGUI _textOver;
     private Camera cam;
 
     private void Awake()
     {
-        //get the text component
-        _textUnder = transform.Find("Under").GetComponent<TextMeshProUGUI>();
-        _textOver = transform.Find("Over").GetComponent<TextMeshProUGUI>();
         GameObject tempObject = GameObject.Find("MainCamera");
         cam = tempObject.GetComponent<Camera>();
     }
@@ -28,7 +25,8 @@ public class WordMovement2 : MonoBehaviour
         if (isFullyVisible)
         {
             // This is a UI element since it has a RectTransform component on it
-            _textUnder.rectTransform.position += new Vector3(PlayerProgression.currentSpeed * Time.deltaTime, 0, 0);
+            //_textUnder.rectTransform.position += new Vector3(PlayerProgression.currentSpeed * Time.deltaTime, 0, 0);
+            transform.localPosition += new Vector3(PlayerProgression.currentSpeed * Time.deltaTime, 0, 0);
         }
         else
         {
