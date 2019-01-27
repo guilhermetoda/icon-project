@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224586392368124538}
+  - component: {fileID: 114102454180206264}
   m_Layer: 5
   m_Name: WordNegative2
   m_TagString: Untagged
@@ -60,6 +61,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114102454180206264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1502451147413802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f1ebc355ecded64a958b4f228ea011a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114359915384930450
 MonoBehaviour:
   m_ObjectHideFlags: 1
