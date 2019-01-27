@@ -28,17 +28,7 @@ public class WordMovement : MonoBehaviour {
         bool isFullyVisible = _textUnder.GetComponent<RectTransform>().IsFullyVisibleFrom(cam);
         if (isFullyVisible)
         {
-            // This is a UI element since it has a RectTransform component on it
-            if (PlayerProgression.currentLevel % 2 == 1)
-            {
-                _textUnder.rectTransform.position -= new Vector3(PlayerProgression.currentSpeed * Time.deltaTime, 0, 0);
-                _textOver.rectTransform.position = _textUnder.rectTransform.position;
-            }
-            else
-            {
-                _textUnder.rectTransform.position += new Vector3(PlayerProgression.currentSpeed * Time.deltaTime, 0, 0);
-                _textOver.rectTransform.position = _textUnder.rectTransform.position;
-            }
+            UpdatePosition(Time.deltaTime);
         }
         else
         {
@@ -46,6 +36,25 @@ public class WordMovement : MonoBehaviour {
             PlayerProgression.PlayerMiss();
         }
 
+    }
+
+    private void UpdatePosition(float time)
+    {
+        if (PlayerProgression.currentLevel % 2 == 1)
+        {
+            _textUnder.rectTransform.position -= new Vector3(PlayerProgression.currentSpeed * time, 0, 0);
+            _textOver.rectTransform.position = _textUnder.rectTransform.position;
+        }
+        else
+        {
+            _textUnder.rectTransform.position += new Vector3(PlayerProgression.currentSpeed * time, 0, 0);
+            _textOver.rectTransform.position = _textUnder.rectTransform.position;
+        }
+    }
+
+    public void Mistake()
+    {
+        UpdatePosition(0.1f);
     }
 
     public void spawnWord(string word)

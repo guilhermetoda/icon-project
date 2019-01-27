@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 
 public class Typing : MonoBehaviour {
-
+    public static Typing TextBox;
     private TextMeshProUGUI _text;
 
     [SerializeField] private AudioClip audioLevelUp;
@@ -19,6 +19,7 @@ public class Typing : MonoBehaviour {
         //get the text component
         _text = GetComponent<TextMeshProUGUI>();
         audio = GetComponent<AudioSource>();
+        TextBox = this;
     }
 
     private void Update()
@@ -70,16 +71,16 @@ public class Typing : MonoBehaviour {
 
     private void AddInputCharacter(char input)
     {
-        print("DSDSDD: " + input);
         _input += input;
         _text.text = _input;
         if (!HighlightWords(_input))
         {
             ClearInputText();
+            PlayerProgression.PlayerMistake();
         }
     }
 
-    private void ClearInputText()
+    public void ClearInputText()
     {
         _input = "";
         _text.text = _input;

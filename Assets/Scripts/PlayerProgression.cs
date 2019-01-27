@@ -73,12 +73,22 @@ public class PlayerProgression : MonoBehaviour
         return NextLP();
     }
 
+    public static void PlayerMistake()
+    {
+        audio.Play();
+        foreach (var ob in CurrentWord.GetCurrentWordObjects())
+        {
+            ob.GetComponent<WordMovement>().Mistake();
+        }
+    }
+
     public static void PlayerMiss()
     {
         currentLevelProgression = 0;
         audio.Play();
         // -1000 points for losing the word (CHANGE THAT LATER, DENY!)
         currentScore -= 1000;
+        Typing.TextBox.ClearInputText();
     }
 
 
