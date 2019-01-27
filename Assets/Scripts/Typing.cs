@@ -40,6 +40,7 @@ public class Typing : MonoBehaviour {
                 if (CheckCurrentWord(_text.text))
                 {
                     _text.text = "";
+                    CurrentWord.PlayCorrectSound();  // plays sound when collided.
                     //Destroy Letter
                     CurrentWord.DestroyWord();
 

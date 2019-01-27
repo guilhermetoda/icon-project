@@ -5,15 +5,12 @@ using TMPro;
 
 public class CurrentWord : MonoBehaviour {
 
-    //Spawn Position (-50f, -73f, 0f);
-    //End Position (-1024, -73f, 0f);
-
     [SerializeField] private GameObject[] _wordPrefab; // the word prefab spawn
     private Words wordsObject;
     private static string currentWord;
     private Canvas canvas;
     private static GameObject currentWordObject;
-
+    private static AudioSource audio;
     private Camera cam;
 
 
@@ -23,6 +20,8 @@ public class CurrentWord : MonoBehaviour {
         currentWord = "";
         GameObject tempObject = GameObject.Find("ScreenCanvas");
         GameObject tempCamObject = GameObject.Find("MainCamera");
+
+        audio = GetComponent<AudioSource>();
 
         if (tempObject != null)
         {
@@ -61,10 +60,14 @@ public class CurrentWord : MonoBehaviour {
         return currentWord;
     }
 
+    public static void PlayCorrectSound()
+    {
+        audio.Play();
+    }
+
     public static void DestroyWord()
     {
-        Debug.Log("Destroying Word");
-        
+
         Destroy(currentWordObject.gameObject);
        
         currentWord = "";
@@ -95,11 +98,10 @@ public class CurrentWord : MonoBehaviour {
         }
 
         if (currentWordObject == null) {
-            Debug.Log("Creating New word");
             string word = wordsObject.GetRandomWord(wordType);
             currentWord = word;
             Vector3 spawnPosition = GetSpawnPosition();
-            Debug.Log(currentWord);
+            
             GameObject newWordObject = _wordPrefab[wordType];
             newWordObject.GetComponent<TextMeshProUGUI>().text = currentWord;
             currentWordObject = Instantiate(newWordObject, spawnPosition, Quaternion.identity);
