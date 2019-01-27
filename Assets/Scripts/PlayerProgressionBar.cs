@@ -1,21 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+
+using UnityEngine.UI;
 
 public class PlayerProgressionBar : MonoBehaviour {
 
     //text component
-    private TextMeshProUGUI _text;
-
-
+    private Image _progressionBar;
+    
     private void Awake () {
         //get the text component
-        _text = GetComponent<TextMeshProUGUI>();
+        _progressionBar = GetComponent<Image>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        _text.SetText("Level " + PlayerProgression.currentLevel +" | "+PlayerProgression.currentLevelProgression.ToString()+"/"+PlayerProgression.LPLevel);
+        Debug.Log((float)(PlayerProgression.currentLevelProgression / PlayerProgression.LPLevel));
+        float progression = (float)PlayerProgression.currentLevelProgression / PlayerProgression.LPLevel;
+        transform.localScale = new Vector3(progression, 1, 1);
+        //_progressionBar.fillAmount = (float)(PlayerProgression.currentLevelProgression / PlayerProgression.LPLevel);
     }
+
 }

@@ -11,9 +11,6 @@ public class WordMovement : MonoBehaviour {
 
     private float _screenOffset = 400;
 
-    private Camera cam;
-
-
     private void Awake()
     {
         //get the text component
@@ -65,7 +62,7 @@ public class WordMovement : MonoBehaviour {
 
     public void Mistake()
     {
-        UpdatePosition(0.1f);
+        //UpdatePosition(0.1f);
     }
 
     public void spawnWord(string word)
