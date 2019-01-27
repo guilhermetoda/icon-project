@@ -37,7 +37,7 @@ public class PlayerProgression : MonoBehaviour
 
     public static void RecalculateSpeed()
     {
-        currentSpeed = (float)currentLevel / 10f;
+        currentSpeed = Mathf.Log10((int)(currentLevel / 2f) + 50) / 5f;
     }
 
     public static bool NextLP()
