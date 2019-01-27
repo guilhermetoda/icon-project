@@ -13,7 +13,7 @@ public class CurrentWord : MonoBehaviour {
     private static List<GameObject> currentWordObjects = new List<GameObject>();
     private Camera cam;
 
-    private float _spawnCooldown = 2f;
+    private float _spawnCooldown = 1.5f;
     private int _maxWordsOnScreen = 5;
 
     private void Awake()

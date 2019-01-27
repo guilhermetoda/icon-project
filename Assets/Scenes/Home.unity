@@ -5269,6 +5269,8 @@ MonoBehaviour:
   mainCam: {fileID: 534669902}
   HomeMusic: {fileID: 8300000, guid: b70bf40bb5f1d9c4db442dcad69e64c2, type: 3}
   OfficeMusic: {fileID: 8300000, guid: 2e129d0e9f68e734fb36f4596eddb19f, type: 3}
+  _shakeDistance: 0.01
+  _shakeSpeed: 1
 --- !u!82 &534669908
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8431,12 +8433,12 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

@@ -100,12 +100,18 @@ public class Typing : MonoBehaviour {
 
         for (int i = 0; i < currentObjects.Count; i++)
         {
-            string checkmatch = currentWords[i].Substring(0, input.Length);
-            print(input + "::: " + input);
-            if (input.Equals(checkmatch))
+            if (input.Equals(currentWords[i]))
             {
-                currentObjects[i].GetComponent<WordMovement>().updateHighlighting(input);
                 wordFound = true;
+            }
+            else if (input.Length <= currentWords[i].Length)
+            {
+                string checkmatch = currentWords[i].Substring(0, input.Length);
+                if (input.Equals(checkmatch))
+                {
+                    currentObjects[i].GetComponent<WordMovement>().updateHighlighting(input);
+                    wordFound = true;
+                }
             }
         }
 
