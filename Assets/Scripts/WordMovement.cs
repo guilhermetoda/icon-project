@@ -32,10 +32,12 @@ public class WordMovement : MonoBehaviour {
             if (PlayerProgression.currentLevel % 2 == 1)
             {
                 _textUnder.rectTransform.position -= new Vector3(PlayerProgression.currentSpeed * Time.deltaTime, 0, 0);
+                _textOver.rectTransform.position = _textUnder.rectTransform.position;
             }
             else
             {
                 _textUnder.rectTransform.position += new Vector3(PlayerProgression.currentSpeed * Time.deltaTime, 0, 0);
+                _textOver.rectTransform.position = _textUnder.rectTransform.position;
             }
         }
         else
@@ -49,6 +51,16 @@ public class WordMovement : MonoBehaviour {
     public void spawnWord(string word)
     {
         _textUnder.text = word;
+        _textOver.text = "";
+    }
+
+    public void updateHighlighting(string input)
+    {
+        _textOver.text = input;
+    }
+
+    public void clearHighlighting()
+    {
         _textOver.text = "";
     }
 }

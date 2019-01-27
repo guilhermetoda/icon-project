@@ -20,12 +20,12 @@ public class Words : MonoBehaviour {
     {
         if (wordType == 0)
         {
-            Debug.Log("POSITIVE WORD"+positiveWords[0]);
+            //Debug.Log("POSITIVE WORD"+positiveWords[0]);
             return GetRandomWordFromArray(positiveWords);
         }
         else
         {
-            Debug.Log("NEGATIVE WORD");
+            //Debug.Log("NEGATIVE WORD");
             return GetRandomWordFromArray(negativeWords);
         }
     }

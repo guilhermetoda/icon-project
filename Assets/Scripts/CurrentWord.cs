@@ -62,12 +62,16 @@ public class CurrentWord : MonoBehaviour {
         return currentWords;
     }
 
+    public static List<GameObject> GetCurrentWordObjects()
+    {
+        return currentWordObjects;
+    }
+
     public static void DestroyWord(int index)
     {
         Destroy(currentWordObjects[index].gameObject);
         currentWordObjects.RemoveAt(index);
         currentWords.RemoveAt(index);
-  
     }
 
     public static void DestroyWordByText(string text)
@@ -82,7 +86,6 @@ public class CurrentWord : MonoBehaviour {
 
     private static int CheckCurrentWord(string word)
     {
-        
         List<string> currentWords = GetCurrentWords();
         for (int i = 0; i < currentWords.Count; i++)
         {
