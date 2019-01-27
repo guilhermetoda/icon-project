@@ -88,11 +88,16 @@ public class PlayerProgression : MonoBehaviour
         if (currentLevel % 2 == 1)
         {
             GameObject.Find("MainCamera").GetComponent<CameraTransition>().ChangeToOfficeCamera();
+            //1.5f when you are in the office
+            CurrentWord.InvokeSpawn(1.5f);
         }
         else
         {
+            //2f when you are at home
+            CurrentWord.InvokeSpawn(2f);
             GameObject.Find("MainCamera").GetComponent<CameraTransition>().ChangeToHomeCamera();
         }
+       
     }
 
     //Returns true if the player reaches new level

@@ -15,7 +15,7 @@ public class CurrentWord : MonoBehaviour {
 
     public static CurrentWord invokerController;
 
-    private float _spawnCooldown = 2f;
+    private float _spawnCooldown = 3f;
     private int _maxWordsOnScreen = 4;
 
     private void Awake()
@@ -126,8 +126,6 @@ public class CurrentWord : MonoBehaviour {
         float randomY = Random.Range(80, 200);
         Vector3 position = cam.ScreenToWorldPoint(new Vector3(0, cam.pixelHeight, cam.nearClipPlane));
         position.y += -randomY;
-        position.x += 200;
-
         return position;
     }
 
