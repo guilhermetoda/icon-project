@@ -23,7 +23,6 @@ public class CurrentWord : MonoBehaviour {
         GameObject tempObject = GameObject.Find("ScreenCanvas");
         GameObject tempCamObject = GameObject.Find("MainCamera");
 
-
         if (tempObject != null)
         {
             //If we found the object , get the Canvas component from it.
@@ -136,6 +135,7 @@ public class CurrentWord : MonoBehaviour {
             newWordObject.GetComponent<WordMovement>().spawnWord(word);
             GameObject currentWordObject = Instantiate(newWordObject, spawnPosition, Quaternion.identity);
             currentWordObject.transform.SetParent(canvas.transform, false);
+            currentWordObject.transform.SetAsFirstSibling();
             currentWordObjects.Add(currentWordObject);
         }
     }
