@@ -65,7 +65,7 @@ public class Typing : MonoBehaviour {
         if (_text.text.Length != 0)
         {
             _text.text = _text.text.Substring(0, _text.text.Length - 1);
-            audio.PlayOneShot(audioTyping);
+            //audio.PlayOneShot(audioTyping);
         }
     }
 
@@ -73,7 +73,7 @@ public class Typing : MonoBehaviour {
     {
         _input += input;
         _text.text = _input;
-        audio.PlayOneShot(audioTyping);
+        //audio.PlayOneShot(audioTyping);
         if (!HighlightWords(_input))
         {
             ClearInputText();

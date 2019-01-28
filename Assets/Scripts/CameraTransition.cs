@@ -49,6 +49,7 @@ public class CameraTransition : MonoBehaviour
         cameraPosition = camHome.transform.localPosition;
         GameObject.Find("ScreenCanvas").GetComponent<Canvas>().worldCamera = mainCam.GetComponent<Camera>();
         audio.Stop();
+        audio.loop = true;
         audio.PlayOneShot(HomeMusic); 
     }
     public void ChangeToOfficeCamera()
@@ -58,7 +59,9 @@ public class CameraTransition : MonoBehaviour
         cameraPosition = camOffice.transform.localPosition;
         GameObject.Find("ScreenCanvas").GetComponent<Canvas>().worldCamera = mainCam.GetComponent<Camera>();
         audio.Stop();
+        audio.loop = true;
         audio.PlayOneShot(OfficeMusic);
+        
     }
 
     

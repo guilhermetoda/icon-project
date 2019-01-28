@@ -89,12 +89,12 @@ public class PlayerProgression : MonoBehaviour
         {
             GameObject.Find("MainCamera").GetComponent<CameraTransition>().ChangeToOfficeCamera();
             //1.5f when you are in the office
-            CurrentWord.InvokeSpawn(1.5f);
+            CurrentWord.InvokeSpawn(2f);
         }
         else
         {
             //2f when you are at home
-            CurrentWord.InvokeSpawn(2f);
+            CurrentWord.InvokeSpawn(2.5f);
             GameObject.Find("MainCamera").GetComponent<CameraTransition>().ChangeToHomeCamera();
         }
        

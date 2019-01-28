@@ -52,7 +52,7 @@ public class WordMovement : MonoBehaviour {
 
     public bool CheckOutsideCamera()
     {
-        print(_textUnder.transform.localPosition.x);
+        
         if (_textUnder.transform.localPosition.x < -_screenOffset || _textUnder.transform.localPosition.x > 1280)
         {
             return true;

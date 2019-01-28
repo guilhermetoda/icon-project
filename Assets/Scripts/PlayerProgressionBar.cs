@@ -16,7 +16,7 @@ public class PlayerProgressionBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log((float)(PlayerProgression.currentLevelProgression / PlayerProgression.LPLevel));
+        
         float progression = (float)PlayerProgression.currentLevelProgression / PlayerProgression.LPLevel;
         transform.localScale = new Vector3(progression, 1, 1);
         //_progressionBar.fillAmount = (float)(PlayerProgression.currentLevelProgression / PlayerProgression.LPLevel);
